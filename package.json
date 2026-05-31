@@ -1,0 +1,25 @@
+{
+  "name": "testing-project",
+  "version": "1.0.0",
+  "description": "Basic project with HTML, CSS, JavaScript and testing",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "start": "open index.html"
+  },
+  "keywords": [
+    "testing",
+    "javascript",
+    "html",
+    "css"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.0",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0"
+  }
+}
