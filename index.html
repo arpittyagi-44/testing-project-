@@ -3,68 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing Basics Project</title>
-    <link rel="stylesheet" href="src/styles.css">
+    <title>FitTrack - Your Personal Fitness Companion</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Testing Basics Project</h1>
-            <p>A simple project demonstrating HTML, CSS, JavaScript, and Testing</p>
-        </header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <h1>🏋️ FitTrack</h1>
+                <p>Monitor Your Health Journey</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#dashboard">Dashboard</a></li>
+                <li><a href="#workouts">Workouts</a></li>
+                <li><a href="#nutrition">Nutrition</a></li>
+                <li><a href="#analytics">Analytics</a></li>
+            </ul>
+        </div>
+    </nav>
 
-        <main>
-            <section class="calculator-section">
-                <h2>Simple Calculator</h2>
-                <div class="calculator">
-                    <input type="number" id="num1" placeholder="Enter first number" class="input-field">
-                    <input type="number" id="num2" placeholder="Enter second number" class="input-field">
-                    
-                    <div class="button-group">
-                        <button id="addBtn" class="btn btn-add">Add</button>
-                        <button id="subtractBtn" class="btn btn-subtract">Subtract</button>
-                        <button id="multiplyBtn" class="btn btn-multiply">Multiply</button>
-                        <button id="divideBtn" class="btn btn-divide">Divide</button>
+    <main class="container">
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="dashboard">
+            <h2>Welcome Back!</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👟</div>
+                    <h3>Steps Today</h3>
+                    <p class="stat-value" id="stepsDisplay">0</p>
+                    <input type="number" id="stepsInput" placeholder="Enter steps" min="0">
+                    <button onclick="addSteps()">Add Steps</button>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">🔥</div>
+                    <h3>Calories Burned</h3>
+                    <p class="stat-value" id="caloriesDisplay">0</p>
+                    <input type="number" id="caloriesInput" placeholder="Enter calories" min="0">
+                    <button onclick="addCalories()">Add Calories</button>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">💤</div>
+                    <h3>Sleep (hours)</h3>
+                    <p class="stat-value" id="sleepDisplay">0h</p>
+                    <input type="number" id="sleepInput" placeholder="Enter hours" min="0" max="24" step="0.5">
+                    <button onclick="addSleep()">Log Sleep</button>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">💧</div>
+                    <h3>Water Intake</h3>
+                    <p class="stat-value" id="waterDisplay">0</p>
+                    <p class="stat-subtext">glasses</p>
+                    <input type="number" id="waterInput" placeholder="Glasses" min="0" max="20">
+                    <button onclick="addWater()">Add Water</button>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">❤️</div>
+                    <h3>Heart Rate</h3>
+                    <p class="stat-value" id="heartRateDisplay">0</p>
+                    <p class="stat-subtext">bpm</p>
+                    <input type="number" id="heartRateInput" placeholder="Enter bpm" min="40" max="200">
+                    <button onclick="addHeartRate()">Log Heart Rate</button>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">⚖️</div>
+                    <h3>Weight</h3>
+                    <p class="stat-value" id="weightDisplay">0</p>
+                    <p class="stat-subtext">kg</p>
+                    <input type="number" id="weightInput" placeholder="Enter weight" min="0" step="0.1">
+                    <button onclick="addWeight()">Log Weight</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Workouts Section -->
+        <section id="workouts" class="workouts">
+            <h2>Your Workouts</h2>
+            <div class="workout-input">
+                <input type="text" id="workoutName" placeholder="Workout type (e.g., Running, Gym)">
+                <input type="number" id="workoutDuration" placeholder="Duration (minutes)" min="0">
+                <input type="date" id="workoutDate">
+                <button onclick="addWorkout()" class="btn-primary">Log Workout</button>
+            </div>
+            <div class="workout-list" id="workoutList">
+                <p class="empty-state">No workouts logged yet. Start your fitness journey today!</p>
+            </div>
+        </section>
+
+        <!-- Nutrition Section -->
+        <section id="nutrition" class="nutrition">
+            <h2>Meal Tracking & Nutrition</h2>
+            <div class="nutrition-input">
+                <input type="text" id="mealName" placeholder="Meal name">
+                <input type="number" id="mealCalories" placeholder="Calories" min="0">
+                <input type="date" id="mealDate">
+                <button onclick="addMeal()" class="btn-primary">Log Meal</button>
+            </div>
+            
+            <div class="nutrition-suggestions">
+                <h3>Suggested Meals</h3>
+                <div class="suggestions-grid">
+                    <div class="suggestion-card">
+                        <h4>🥗 Healthy Salad</h4>
+                        <p>~200 calories</p>
+                        <p>Fresh vegetables, olive oil, lean protein</p>
                     </div>
-
-                    <div id="result" class="result">
-                        <p>Result: <span id="resultValue">-</span></p>
+                    <div class="suggestion-card">
+                        <h4>🍎 Protein Smoothie</h4>
+                        <p>~300 calories</p>
+                        <p>Banana, protein powder, yogurt, berries</p>
+                    </div>
+                    <div class="suggestion-card">
+                        <h4>🍗 Grilled Chicken</h4>
+                        <p>~350 calories</p>
+                        <p>With brown rice and steamed vegetables</p>
+                    </div>
+                    <div class="suggestion-card">
+                        <h4>🥑 Energy Bowl</h4>
+                        <p>~400 calories</p>
+                        <p>Quinoa, avocado, nuts, and fresh fruit</p>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section class="counter-section">
-                <h2>Counter</h2>
-                <div class="counter">
-                    <p>Count: <span id="counterValue">0</span></p>
-                    <div class="button-group">
-                        <button id="incrementBtn" class="btn btn-increment">Increment</button>
-                        <button id="decrementBtn" class="btn btn-decrement">Decrement</button>
-                        <button id="resetBtn" class="btn btn-reset">Reset</button>
+            <div class="meal-list" id="mealList">
+                <h3>Logged Meals</h3>
+                <p class="empty-state">No meals logged yet.</p>
+            </div>
+        </section>
+
+        <!-- Analytics Section -->
+        <section id="analytics" class="analytics">
+            <h2>Your Progress Analytics</h2>
+            
+            <div class="goals-section">
+                <h3>Set Your Fitness Goals</h3>
+                <div class="goal-input">
+                    <input type="text" id="goalName" placeholder="Goal name (e.g., Run 5K)">
+                    <input type="number" id="goalTarget" placeholder="Target value" min="0">
+                    <input type="date" id="goalDeadline">
+                    <button onclick="addGoal()" class="btn-primary">Add Goal</button>
+                </div>
+
+                <div class="goals-list" id="goalsList">
+                    <p class="empty-state">No goals set yet. Create your first goal!</p>
+                </div>
+            </div>
+
+            <div class="charts-section">
+                <h3>Weekly Summary</h3>
+                <div class="chart-placeholder">
+                    <canvas id="progressChart"></canvas>
+                </div>
+                <div class="summary-stats">
+                    <div class="summary-card">
+                        <h4>Average Daily Steps</h4>
+                        <p id="avgSteps">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Total Calories This Week</h4>
+                        <p id="totalCalories">0</p>
+                    </div>
+                    <div class="summary-card">
+                        <h4>Average Sleep</h4>
+                        <p id="avgSleep">0h</p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <section class="todo-section">
-                <h2>To-Do List</h2>
-                <div class="todo">
-                    <input type="text" id="todoInput" placeholder="Add a new task" class="input-field">
-                    <button id="addTodoBtn" class="btn btn-add">Add Task</button>
-                    <ul id="todoList" class="todo-list">
-                        <!-- Tasks will be added here -->
-                    </ul>
-                </div>
-            </section>
-        </main>
+        <!-- Clear Data Section -->
+        <section class="settings">
+            <h3>Data Management</h3>
+            <button onclick="clearAllData()" class="btn-danger">Clear All Data</button>
+            <button onclick="downloadData()" class="btn-secondary">Download My Data</button>
+        </section>
+    </main>
 
-        <footer>
-            <p>&copy; 2024 Testing Basics Project. All rights reserved.</p>
-        </footer>
-    </div>
+    <footer>
+        <p>&copy; 2024 FitTrack. Monitor your workouts, steps, calories burned, and progress effortlessly.</p>
+        <p>Keep track of sleep, hydration, heart rate, and other key wellness indicators.</p>
+    </footer>
 
-    <script src="src/calculator.js"></script>
-    <script src="src/counter.js"></script>
-    <script src="src/todo.js"></script>
-    <script src="src/index.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
